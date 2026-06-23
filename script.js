@@ -3,7 +3,7 @@ async function connectWallet() {
     const walletInput = document.getElementById("walletInput");
 
     if (typeof window.ethereum === "undefined") {
-        walletStatus.style.color = "#ffcc00";
+        walletStatus.style.color = "#00ff62";
         walletStatus.textContent = "No EVM wallet found. Open this site in MetaMask, Trust Wallet browser, Rabby, or another Web3 wallet.";
         return;
     }
@@ -46,11 +46,11 @@ function checkEligibility() {
     const eligibleChars = ["0", "2", "4", "6", "8", "a", "c", "e"];
 
     if (eligibleChars.includes(lastChar)) {
-        result.style.color = "#00ff99";
-        result.textContent = "Eligible. This wallet passed the demo check.";
+        result.style.color = "#06f897";
+        result.textContent = "Congratulations! You are eligible.";
     } else {
-        result.style.color = "#ff4d4d";
-        result.textContent = "Not eligible. This wallet did not pass the demo check.";
+        result.style.color = "#fd0303";
+        result.textContent = "Sorry, you are not eligible.";
     }
 }
 
