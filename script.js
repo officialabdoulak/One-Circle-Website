@@ -1,3 +1,31 @@
+async function connectWallet() {
+    const walletStatus = document.getElementById("walletStatus");
+    const walletInput = document.getElementById("walletInput");
+
+    if (typeof window.ethereum === "undefined") {
+        walletStatus.style.color = "#ffcc00";
+        walletStatus.textContent = "No EVM wallet found. Open this site in MetaMask, Trust Wallet browser, Rabby, or another Web3 wallet.";
+        return;
+    }
+
+    try {
+        const accounts = await window.ethereum.request({
+            method: "eth_requestAccounts"
+        });
+
+        const wallet = accounts[0];
+
+        walletStatus.style.color = "#00ff99";
+        walletStatus.textContent =
+            "Connected: " + wallet.slice(0, 6) + "..." + wallet.slice(-4);
+
+        walletInput.value = wallet;
+    } catch (error) {
+        walletStatus.style.color = "#ff4d4d";
+        walletStatus.textContent = "Wallet connection cancelled.";
+    }
+}
+
 function checkEligibility() {
     const wallet = document.getElementById("walletInput").value.trim();
     const result = document.getElementById("result");

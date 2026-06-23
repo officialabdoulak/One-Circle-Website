@@ -59,9 +59,13 @@ nav a{
 
 .buttons{
     margin-top:35px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
 }
 
-.buttons a{
+.buttons a,
+.buttons button{
     display:inline-block;
     background:#00ff99;
     color:#020617;
@@ -69,13 +73,21 @@ nav a{
     border-radius:12px;
     text-decoration:none;
     font-weight:bold;
-    margin-right:12px;
+    border:none;
+    cursor:pointer;
 }
 
 .buttons .secondary{
     background:transparent;
     color:white;
     border:1px solid rgba(255,255,255,0.25);
+}
+
+.wallet-status{
+    margin-top:18px;
+    color:#00ff99;
+    font-size:15px;
+    font-weight:bold;
 }
 
 .features{

@@ -19,7 +19,6 @@
 </nav>
 
 <section class="hero">
-
     <p class="badge">Private Alpha Hub</p>
 
     <h1>
@@ -33,6 +32,8 @@
     </p>
 
     <div class="buttons">
+        <button onclick="connectWallet()">Connect Wallet</button>
+
         <a href="https://t.me/Only_Circle_Alpha_bot" target="_blank">
             Open Telegram Bot
         </a>
@@ -42,8 +43,10 @@
         </a>
     </div>
 
+    <p id="walletStatus" class="wallet-status">
+        Wallet not connected
+    </p>
 </section>
-
 
 <section id="features" class="features">
 
@@ -70,7 +73,6 @@
 
 </section>
 
-
 <section id="checker" class="checker">
 
     <p class="badge">Airdrop Tool</p>
@@ -78,11 +80,10 @@
     <h2>Eligibility Checker</h2>
 
     <p>
-        Paste a wallet address below to test the first checker interface.
+        Paste a wallet address below or connect your wallet to test the first checker interface.
     </p>
 
     <div class="checker-box">
-
         <input
             id="walletInput"
             type="text"
@@ -92,13 +93,11 @@
         <button onclick="checkEligibility()">
             Check Eligibility
         </button>
-
     </div>
 
     <p id="result"></p>
 
 </section>
-
 
 <section id="prices" class="checker">
 
@@ -107,9 +106,8 @@
     <h2>Crypto Prices</h2>
 
     <p>
-        Live prices for major crypto assets.
+        Live prices for major crypto assets. Prices update automatically every 10 seconds.
     </p>
-
 
     <div class="price-grid">
 
@@ -170,4 +168,214 @@
 <script src="script.js"></script>
 
 </body>
-</html>
+</html>*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:linear-gradient(135deg,#020617,#111827,#0f172a);
+    color:white;
+    font-family:Arial, sans-serif;
+    min-height:100vh;
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:25px 8%;
+}
+
+nav h2{
+    color:#00ff99;
+}
+
+nav a{
+    color:#d1d5db;
+    text-decoration:none;
+    margin-left:22px;
+    font-size:15px;
+}
+
+.hero{
+    padding:90px 8%;
+    max-width:900px;
+}
+
+.badge{
+    display:inline-block;
+    background:rgba(0,255,153,0.12);
+    color:#00ff99;
+    padding:8px 14px;
+    border:1px solid rgba(0,255,153,0.3);
+    border-radius:30px;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-size:58px;
+    line-height:1.05;
+    margin-bottom:25px;
+}
+
+.hero p{
+    color:#cbd5e1;
+    font-size:18px;
+    line-height:1.7;
+    max-width:650px;
+}
+
+.buttons{
+    margin-top:35px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.buttons a,
+.buttons button{
+    display:inline-block;
+    background:#00ff99;
+    color:#020617;
+    padding:14px 22px;
+    border-radius:12px;
+    text-decoration:none;
+    font-weight:bold;
+    border:none;
+    cursor:pointer;
+}
+
+.buttons .secondary{
+    background:transparent;
+    color:white;
+    border:1px solid rgba(255,255,255,0.25);
+}
+
+.wallet-status{
+    margin-top:18px;
+    color:#00ff99;
+    font-size:15px;
+    font-weight:bold;
+}
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+    padding:20px 8% 80px;
+}
+
+.card{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:20px;
+    padding:28px;
+    backdrop-filter:blur(12px);
+}
+
+.card h3{
+    color:#00ff99;
+    margin-bottom:12px;
+}
+
+.card p{
+    color:#cbd5e1;
+    line-height:1.6;
+    font-size:17px;
+    font-weight:bold;
+}
+
+.checker{
+    padding:40px 8% 90px;
+    max-width:1100px;
+}
+
+.checker h2{
+    font-size:36px;
+    margin-bottom:15px;
+    color:#00ff99;
+}
+
+.checker p{
+    color:#cbd5e1;
+    line-height:1.6;
+}
+
+.checker-box{
+    margin-top:25px;
+    display:flex;
+    gap:12px;
+    max-width:700px;
+}
+
+.checker-box input{
+    flex:1;
+    padding:16px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,0.15);
+    background:rgba(255,255,255,0.06);
+    color:white;
+    outline:none;
+}
+
+.checker-box button{
+    padding:16px 22px;
+    border:none;
+    border-radius:12px;
+    background:#00ff99;
+    color:#020617;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+#result{
+    margin-top:20px;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.price-grid{
+    margin-top:28px;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:18px;
+}
+
+.price-grid .card{
+    padding:22px;
+}
+
+.price-grid .card p{
+    font-size:20px;
+    color:white;
+}
+
+@media(max-width:900px){
+    nav{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    nav a{
+        margin-left:10px;
+        margin-right:10px;
+    }
+
+    .hero h1{
+        font-size:40px;
+    }
+
+    .features{
+        grid-template-columns:1fr;
+    }
+
+    .checker-box{
+        flex-direction:column;
+    }
+
+    .price-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
