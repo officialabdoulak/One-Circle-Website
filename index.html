@@ -6,60 +6,168 @@
 </head>
 <body>
 
-    <nav>
-        <h2>One Circle Alpha</h2>
-        <div>
-            <a href="#features">Features</a>
-            <a href="#checker">Checker</a>
-            <a href="https://x.com/officialabdulak" target="_blank">X</a>
-            <a href="https://t.me/Only_Circle_Alpha_bot" target="_blank">Bot</a>
-        </div>
-    </nav>
+<nav>
+    <h2>One Circle Alpha</h2>
 
-    <section class="hero">
-        <p class="badge">Private Alpha Hub</p>
-        <h1>Stay Early. Stay Focused. Stay Ahead.</h1>
+    <div>
+        <a href="#features">Features</a>
+        <a href="#checker">Checker</a>
+        <a href="#prices">Prices</a>
+        <a href="https://x.com/officialabdulak" target="_blank">X</a>
+        <a href="https://t.me/Only_Circle_Alpha_bot" target="_blank">Bot</a>
+    </div>
+</nav>
+
+<section class="hero">
+
+    <p class="badge">Private Alpha Hub</p>
+
+    <h1>
+        Stay Early. Stay Focused.<br>
+        Stay Ahead.
+    </h1>
+
+    <p>
+        One Circle Alpha brings crypto updates, market prices, X alerts,
+        and community opportunities into one private hub.
+    </p>
+
+    <div class="buttons">
+        <a href="https://t.me/Only_Circle_Alpha_bot" target="_blank">
+            Open Telegram Bot
+        </a>
+
+        <a href="https://x.com/officialabdulak" class="secondary" target="_blank">
+            Follow on X
+        </a>
+    </div>
+
+</section>
+
+
+<section id="features" class="features">
+
+    <div class="card">
+        <h3>Market Prices</h3>
         <p>
-            One Circle Alpha brings crypto updates, market prices, X alerts,
-            and community opportunities into one private hub.
+            Track BTC, ETH, SOL and other major crypto assets.
         </p>
+    </div>
 
-        <div class="buttons">
-            <a href="https://t.me/Only_Circle_Alpha_bot" target="_blank">Open Telegram Bot</a>
-            <a href="https://x.com/officialabdulak" target="_blank" class="secondary">Follow on X</a>
-        </div>
-    </section>
+    <div class="card">
+        <h3>X Notifications</h3>
+        <p>
+            Get automatic alerts when new posts are shared from tracked accounts.
+        </p>
+    </div>
 
-    <section id="features" class="features">
+    <div class="card">
+        <h3>Community Updates</h3>
+        <p>
+            Receive broadcasts, alpha drops and useful updates in one place.
+        </p>
+    </div>
+
+</section>
+
+
+<section id="checker" class="checker">
+
+    <p class="badge">Airdrop Tool</p>
+
+    <h2>Eligibility Checker</h2>
+
+    <p>
+        Paste a wallet address below to test the first checker interface.
+    </p>
+
+    <div class="checker-box">
+
+        <input
+            id="walletInput"
+            type="text"
+            placeholder="Paste wallet address here"
+        >
+
+        <button onclick="checkEligibility()">
+            Check Eligibility
+        </button>
+
+    </div>
+
+    <p id="result"></p>
+
+</section>
+
+
+<section id="prices" class="checker">
+
+    <p class="badge">Live Market</p>
+
+    <h2>Crypto Prices</h2>
+
+    <p>
+        Live prices for major crypto assets.
+    </p>
+
+
+    <div class="price-grid">
+
         <div class="card">
-            <h3>Market Prices</h3>
-            <p>Track BTC and ETH prices directly from the Telegram bot.</p>
+            <h3>Bitcoin</h3>
+            <p id="btc">$...</p>
         </div>
 
         <div class="card">
-            <h3>X Notifications</h3>
-            <p>Get automatic alerts when new posts are shared from tracked accounts.</p>
+            <h3>Ethereum</h3>
+            <p id="eth">$...</p>
         </div>
 
         <div class="card">
-            <h3>Community Updates</h3>
-            <p>Receive broadcasts, alpha drops, and useful updates in one place.</p>
-        </div>
-    </section>
-
-    <section id="checker" class="checker">
-        <p class="badge">Airdrop Tool</p>
-        <h2>Eligibility Checker</h2>
-        <p>Paste a wallet address below to test the first checker interface.</p>
-
-        <div class="checker-box">
-            <input id="walletInput" type="text" placeholder="Paste wallet address here">
-            <button onclick="checkEligibility()">Check Eligibility</button>
+            <h3>Solana</h3>
+            <p id="sol">$...</p>
         </div>
 
-        <p id="result"></p>
-    </section>
+        <div class="card">
+            <h3>BNB</h3>
+            <p id="bnb">$...</p>
+        </div>
 
-    <script src="script.js"></script>
+        <div class="card">
+            <h3>XRP</h3>
+            <p id="xrp">$...</p>
+        </div>
+
+        <div class="card">
+            <h3>Dogecoin</h3>
+            <p id="doge">$...</p>
+        </div>
+
+        <div class="card">
+            <h3>TRON</h3>
+            <p id="trx">$...</p>
+        </div>
+
+        <div class="card">
+            <h3>Cardano</h3>
+            <p id="ada">$...</p>
+        </div>
+
+        <div class="card">
+            <h3>Avalanche</h3>
+            <p id="avax">$...</p>
+        </div>
+
+        <div class="card">
+            <h3>Chainlink</h3>
+            <p id="link">$...</p>
+        </div>
+
+    </div>
+
+</section>
+
+<script src="script.js"></script>
+
 </body>
 </html>
