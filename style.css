@@ -117,3 +117,57 @@ nav a{
         grid-template-columns:1fr;
     }
 }
+.checker{
+    padding:40px 8% 90px;
+    max-width:900px;
+}
+
+.checker h2{
+    font-size:36px;
+    margin-bottom:15px;
+    color:#00ff99;
+}
+
+.checker p{
+    color:#cbd5e1;
+    line-height:1.6;
+}
+
+.checker-box{
+    margin-top:25px;
+    display:flex;
+    gap:12px;
+    max-width:700px;
+}
+
+.checker-box input{
+    flex:1;
+    padding:16px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,0.15);
+    background:rgba(255,255,255,0.06);
+    color:white;
+    outline:none;
+}
+
+.checker-box button{
+    padding:16px 22px;
+    border:none;
+    border-radius:12px;
+    background:#00ff99;
+    color:#020617;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+#result{
+    margin-top:20px;
+    font-size:18px;
+    font-weight:bold;
+}
+
+@media(max-width:800px){
+    .checker-box{
+        flex-direction:column;
+    }
+}
