@@ -1,10 +1,10 @@
 async function connectWallet() {
-    const walletStatus = document.getElementById("walletStatus");
     const walletInput = document.getElementById("walletInput");
+    const connectButton = document.getElementById("connectButton");
+    const walletMenu = document.getElementById("walletMenu");
 
     if (typeof window.ethereum === "undefined") {
-        walletStatus.style.color = "#00ff62";
-        walletStatus.textContent = "No EVM wallet found. Open this site in MetaMask, Trust Wallet browser, Rabby, or another Web3 wallet.";
+        showToast("No wallet found");
         return;
     }
 
@@ -15,15 +15,33 @@ async function connectWallet() {
 
         const wallet = accounts[0];
 
-        walletStatus.style.color = "#00ff99";
-        walletStatus.textContent =
-            "Connected: " + wallet.slice(0, 6) + "..." + wallet.slice(-4);
+        const message =
+            "I am verifying ownership of this wallet for One Circle Alpha. This action does not move funds or require gas.";
+
+        await window.ethereum.request({
+            method: "personal_sign",
+            params: [message, wallet]
+        });
 
         walletInput.value = wallet;
+        connectButton.textContent = wallet.slice(0, 6) + "..." + wallet.slice(-5);
+        walletMenu.style.display = "inline-block";
+
+        showToast("Wallet verified successfully");
     } catch (error) {
-        walletStatus.style.color = "#ff4d4d";
-        walletStatus.textContent = "Wallet connection cancelled.";
+        showToast("Wallet connection cancelled");
     }
+}
+
+function showToast(message) {
+    const toast = document.getElementById("toast");
+
+    toast.textContent = message;
+    toast.classList.add("show");
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2000);
 }
 
 function checkEligibility() {
@@ -46,11 +64,11 @@ function checkEligibility() {
     const eligibleChars = ["0", "2", "4", "6", "8", "a", "c", "e"];
 
     if (eligibleChars.includes(lastChar)) {
-        result.style.color = "#06f897";
-        result.textContent = "Congratulations! You are eligible.";
+        result.style.color = "#00ff99";
+        result.textContent = "Eligible. This wallet passed the demo check.";
     } else {
-        result.style.color = "#fd0303";
-        result.textContent = "Sorry, you are not eligible.";
+        result.style.color = "#ff4d4d";
+        result.textContent = "Not eligible. This wallet did not pass the demo check.";
     }
 }
 

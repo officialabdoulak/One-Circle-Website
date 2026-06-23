@@ -11,22 +11,77 @@ body{
     min-height:100vh;
 }
 
-nav{
+.navbar{
+    padding:24px 8%;
+}
+
+.nav-top{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:25px 8%;
 }
 
-nav h2{
+.nav-top h2{
+    color:#00ff99;
+    font-size:24px;
+}
+
+.nav-links{
+    margin-top:18px;
+    display:flex;
+    gap:24px;
+    flex-wrap:wrap;
+}
+
+.nav-links a{
+    color:#d1d5db;
+    text-decoration:none;
+    font-size:15px;
+}
+
+.nav-links a:hover{
     color:#00ff99;
 }
 
-nav a{
-    color:#d1d5db;
-    text-decoration:none;
-    margin-left:22px;
-    font-size:15px;
+.wallet-area{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.wallet-area button{
+    background:#00ff99;
+    color:#020617;
+    border:none;
+    padding:13px 26px;
+    border-radius:999px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.wallet-menu{
+    display:none;
+    background:transparent !important;
+    color:white !important;
+    font-size:22px;
+    padding:8px 12px !important;
+}
+
+.toast{
+    position:fixed;
+    top:25px;
+    right:25px;
+    background:#00ff99;
+    color:#020617;
+    padding:14px 20px;
+    border-radius:14px;
+    font-weight:bold;
+    display:none;
+    z-index:9999;
+}
+
+.toast.show{
+    display:block;
 }
 
 .hero{
@@ -60,34 +115,23 @@ nav a{
 .buttons{
     margin-top:35px;
     display:flex;
-    flex-wrap:wrap;
     gap:12px;
+    flex-wrap:wrap;
 }
 
-.buttons a,
-.buttons button{
-    display:inline-block;
+.buttons a{
     background:#00ff99;
     color:#020617;
     padding:14px 22px;
     border-radius:12px;
     text-decoration:none;
     font-weight:bold;
-    border:none;
-    cursor:pointer;
 }
 
 .buttons .secondary{
     background:transparent;
     color:white;
     border:1px solid rgba(255,255,255,0.25);
-}
-
-.wallet-status{
-    margin-top:18px;
-    color:#00ff99;
-    font-size:15px;
-    font-weight:bold;
 }
 
 .features{
@@ -183,14 +227,12 @@ nav a{
 }
 
 @media(max-width:900px){
-    nav{
-        flex-direction:column;
-        gap:15px;
+    .navbar{
+        padding:22px 6%;
     }
 
-    nav a{
-        margin-left:10px;
-        margin-right:10px;
+    .hero{
+        padding:70px 6%;
     }
 
     .hero h1{
@@ -199,6 +241,13 @@ nav a{
 
     .features{
         grid-template-columns:1fr;
+        padding-left:6%;
+        padding-right:6%;
+    }
+
+    .checker{
+        padding-left:6%;
+        padding-right:6%;
     }
 
     .checker-box{

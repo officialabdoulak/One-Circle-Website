@@ -6,17 +6,26 @@
 </head>
 <body>
 
-<nav>
-    <h2>One Circle Alpha</h2>
+<div id="toast" class="toast"></div>
 
-    <div>
+<header class="navbar">
+    <div class="nav-top">
+        <h2>One Circle Alpha</h2>
+
+        <div class="wallet-area">
+            <button id="connectButton" onclick="connectWallet()">Connect</button>
+            <button id="walletMenu" class="wallet-menu">•••</button>
+        </div>
+    </div>
+
+    <div class="nav-links">
         <a href="#features">Features</a>
         <a href="#checker">Checker</a>
         <a href="#prices">Prices</a>
         <a href="https://x.com/officialabdulak" target="_blank">X</a>
         <a href="https://t.me/Only_Circle_Alpha_bot" target="_blank">Bot</a>
     </div>
-</nav>
+</header>
 
 <section class="hero">
     <p class="badge">Private Alpha Hub</p>
@@ -25,16 +34,13 @@
 
     <p>
         One Circle Alpha brings crypto updates, market prices, X alerts,
-        and community opportunities into one private hub.
+        wallet tools, and community opportunities into one private hub.
     </p>
 
     <div class="buttons">
-        <button onclick="connectWallet()">Connect Wallet</button>
         <a href="https://t.me/Only_Circle_Alpha_bot" target="_blank">Open Telegram Bot</a>
         <a href="https://x.com/officialabdulak" class="secondary" target="_blank">Follow on X</a>
     </div>
-
-    <p id="walletStatus" class="wallet-status">Wallet not connected</p>
 </section>
 
 <section id="features" class="features">
@@ -45,12 +51,12 @@
 
     <div class="card">
         <h3>X Notifications</h3>
-        <p>Get automatic alerts when new posts are shared from tracked accounts.</p>
+        <p>Get alerts when new posts are shared from tracked accounts.</p>
     </div>
 
     <div class="card">
-        <h3>Community Updates</h3>
-        <p>Receive broadcasts, alpha drops and useful updates in one place.</p>
+        <h3>Wallet Tools</h3>
+        <p>Connect and verify wallet ownership for future airdrop tools.</p>
     </div>
 </section>
 
