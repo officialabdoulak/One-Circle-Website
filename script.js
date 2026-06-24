@@ -1,99 +1,82 @@
+let connectedWallet = "";
+
+const AIRDROP_CONTRACT = "0xa71fda0C3C2F7f418a5A3352D36A7F4f64138960";
+
+const AIRDROP_ABI = [
+  "function claimable(address) view returns (uint256)",
+  "function hasClaimed(address) view returns (bool)",
+  "function claim()"
+];
+
+const connectTop = document.getElementById("connectTop");
+const connectMain = document.getElementById("connectMain");
+const claimBtn = document.getElementById("claimBtn");
+
+const walletText = document.getElementById("walletText");
+const statusText = document.getElementById("statusText");
+const amountText = document.getElementById("amountText");
+
 async function connectWallet() {
-    const walletInput = document.getElementById("walletInput");
-    const connectButton = document.getElementById("connectButton");
-    const walletMenu = document.getElementById("walletMenu");
+  if (!window.ethereum) {
+    alert("MetaMask not found");
+    return;
+  }
 
-    if (typeof window.ethereum === "undefined") {
-        showToast("No wallet found");
-        return;
-    }
+  const accounts = await window.ethereum.request({
+    method: "eth_requestAccounts"
+  });
 
-    try {
-        const accounts = await window.ethereum.request({
-            method: "eth_requestAccounts"
-        });
+  connectedWallet = accounts[0];
 
-        const wallet = accounts[0];
+  const shortWallet =
+    connectedWallet.slice(0, 6) + "..." + connectedWallet.slice(-4);
 
-        const message =
-            "I am verifying ownership of this wallet for One Circle Alpha. This action does not move funds or require gas.";
+  connectTop.innerText = shortWallet;
+  connectMain.innerText = "Wallet Connected";
+  walletText.innerText = "Wallet: " + shortWallet;
 
-        await window.ethereum.request({
-            method: "personal_sign",
-            params: [message, wallet]
-        });
-
-        walletInput.value = wallet;
-        connectButton.textContent = wallet.slice(0, 6) + "..." + wallet.slice(-5);
-        walletMenu.style.display = "inline-block";
-
-        showToast("Wallet verified successfully");
-    } catch (error) {
-        showToast("Wallet connection cancelled");
-    }
+  await checkEligibility();
 }
 
-function showToast(message) {
-    const toast = document.getElementById("toast");
+async function checkEligibility() {
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  const contract = new ethers.Contract(AIRDROP_CONTRACT, AIRDROP_ABI, provider);
 
-    toast.textContent = message;
-    toast.classList.add("show");
+  const amount = await contract.claimable(connectedWallet);
+  const claimed = await contract.hasClaimed(connectedWallet);
 
-    setTimeout(() => {
-        toast.classList.remove("show");
-    }, 2000);
+  const formattedAmount = ethers.utils.formatUnits(amount, 18);
+
+  if (claimed) {
+    statusText.innerText = "Status: Already Claimed";
+    amountText.innerText = "Claimable: " + formattedAmount + " OCA";
+    claimBtn.disabled = true;
+  } else if (amount.gt(0)) {
+    statusText.innerText = "Status: Eligible";
+    amountText.innerText = "Claimable: " + formattedAmount + " OCA";
+    claimBtn.disabled = false;
+  } else {
+    statusText.innerText = "Status: Not Eligible";
+    amountText.innerText = "Claimable: 0 OCA";
+    claimBtn.disabled = true;
+  }
 }
 
-function checkEligibility() {
-    const wallet = document.getElementById("walletInput").value.trim();
-    const result = document.getElementById("result");
+async function claimOCA() {
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  const signer = provider.getSigner();
 
-    if (wallet === "") {
-        result.style.color = "#ffcc00";
-        result.textContent = "Please paste a wallet address first.";
-        return;
-    }
+  const contract = new ethers.Contract(AIRDROP_CONTRACT, AIRDROP_ABI, signer);
 
-    if (wallet.length < 10) {
-        result.style.color = "#ff4d4d";
-        result.textContent = "Invalid wallet address.";
-        return;
-    }
+  const tx = await contract.claim();
+  alert("Claim submitted. Wait for confirmation.");
 
-    const lastChar = wallet.slice(-1).toLowerCase();
-    const eligibleChars = ["0", "2", "4", "6", "8", "a", "c", "e"];
+  await tx.wait();
 
-    if (eligibleChars.includes(lastChar)) {
-        result.style.color = "#00ff99";
-        result.textContent = "Eligible. This wallet passed the demo check.";
-    } else {
-        result.style.color = "#ff4d4d";
-        result.textContent = "Not eligible. This wallet did not pass the demo check.";
-    }
+  alert("Claim successful. OCA sent to your wallet.");
+  await checkEligibility();
 }
 
-async function loadPrices() {
-    const url =
-        "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,binancecoin,ripple,dogecoin,tron,cardano,avalanche-2,chainlink&vs_currencies=usd";
-
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
-
-        document.getElementById("btc").textContent = "$" + data.bitcoin.usd;
-        document.getElementById("eth").textContent = "$" + data.ethereum.usd;
-        document.getElementById("sol").textContent = "$" + data.solana.usd;
-        document.getElementById("bnb").textContent = "$" + data.binancecoin.usd;
-        document.getElementById("xrp").textContent = "$" + data.ripple.usd;
-        document.getElementById("doge").textContent = "$" + data.dogecoin.usd;
-        document.getElementById("trx").textContent = "$" + data.tron.usd;
-        document.getElementById("ada").textContent = "$" + data.cardano.usd;
-        document.getElementById("avax").textContent = "$" + data["avalanche-2"].usd;
-        document.getElementById("link").textContent = "$" + data.chainlink.usd;
-    } catch (error) {
-        console.log("Price loading error:", error);
-    }
-}
-
-loadPrices();
-setInterval(loadPrices, 10000);
+connectTop.addEventListener("click", connectWallet);
+connectMain.addEventListener("click", connectWallet);
+claimBtn.addEventListener("click", claimOCA);

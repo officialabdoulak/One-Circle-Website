@@ -1,97 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>One Circle Alpha</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>One Circle Alpha | OCA Airdrop</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<div id="toast" class="toast"></div>
-
-<header class="navbar">
-    <div class="nav-top">
-        <h2>One Circle Alpha</h2>
-
-        <div class="wallet-area">
-            <button id="connectButton" onclick="connectWallet()">Connect</button>
-            <button id="walletMenu" class="wallet-menu">•••</button>
-        </div>
+  <header class="navbar">
+    <div class="brand">
+      <img src="images/logo.png" alt="One Circle Alpha Logo" />
     </div>
 
-    <div class="nav-links">
-        <a href="#features">Features</a>
-        <a href="#checker">Checker</a>
-        <a href="#prices">Prices</a>
-        <a href="https://x.com/officialabdulak" target="_blank">X</a>
-        <a href="https://t.me/Only_Circle_Alpha_bot" target="_blank">Bot</a>
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#" class="active">Airdrop</a>
+      <a href="#">About</a>
+      <a href="#">Tokenomics</a>
+      <a href="#">Roadmap</a>
+      <a href="#">FAQ</a>
+    </nav>
+
+    <button id="connectTop" class="connect-btn">Connect Wallet</button>
+  </header>
+
+  <main class="hero">
+    <h1><span>$OCA</span> <strong>Airdrop</strong> Claim</h1>
+    <p class="subtitle">$OCA is the native token of <span>One Alpha Circle.</span></p>
+
+    <section class="claim-card">
+      <h2>Claim <span>$OCA</span> Token</h2>
+      <p>Connect your wallet to view eligibility and claim $OCA.</p>
+
+      <button id="connectMain" class="main-btn">Connect Wallet</button>
+
+      <div id="resultBox" class="result-box">
+        <p id="walletText">Wallet: Not connected</p>
+        <p id="statusText">Status: Waiting</p>
+        <p id="amountText">Claimable: 0 OCA</p>
+      </div>
+
+      <button id="claimBtn" class="claim-btn" disabled>Claim OCA</button>
+    </section>
+
+    <div class="big-logo">
+      <img src="images/logo.png" alt="One Circle Alpha Logo" />
     </div>
-</header>
+  </main>
 
-<section class="hero">
-    <p class="badge">Private Alpha Hub</p>
-
-    <h1>Stay Early. Stay Focused.<br>Stay Ahead.</h1>
-
-    <p>
-        One Circle Alpha brings crypto updates, market prices, X alerts,
-        wallet tools, and community opportunities into one private hub.
-    </p>
-
-    <div class="buttons">
-        <a href="https://t.me/Only_Circle_Alpha_bot" target="_blank">Open Telegram Bot</a>
-        <a href="https://x.com/officialabdulak" class="secondary" target="_blank">Follow on X</a>
-    </div>
-</section>
-
-<section id="features" class="features">
-    <div class="card">
-        <h3>Market Prices</h3>
-        <p>Track BTC, ETH, SOL and other major crypto assets.</p>
-    </div>
-
-    <div class="card">
-        <h3>X Notifications</h3>
-        <p>Get alerts when new posts are shared from tracked accounts.</p>
-    </div>
-
-    <div class="card">
-        <h3>Wallet Tools</h3>
-        <p>Connect and verify wallet ownership for future airdrop tools.</p>
-    </div>
-</section>
-
-<section id="checker" class="checker">
-    <p class="badge">Airdrop Tool</p>
-    <h2>Eligibility Checker</h2>
-    <p>Paste a wallet address below or connect your wallet to test the first checker interface.</p>
-
-    <div class="checker-box">
-        <input id="walletInput" type="text" placeholder="Paste wallet address here">
-        <button onclick="checkEligibility()">Check Eligibility</button>
-    </div>
-
-    <p id="result"></p>
-</section>
-
-<section id="prices" class="checker">
-    <p class="badge">Live Market</p>
-    <h2>Crypto Prices</h2>
-    <p>Live prices for major crypto assets. Prices update automatically every 10 seconds.</p>
-
-    <div class="price-grid">
-        <div class="card"><h3>Bitcoin</h3><p id="btc">$...</p></div>
-        <div class="card"><h3>Ethereum</h3><p id="eth">$...</p></div>
-        <div class="card"><h3>Solana</h3><p id="sol">$...</p></div>
-        <div class="card"><h3>BNB</h3><p id="bnb">$...</p></div>
-        <div class="card"><h3>XRP</h3><p id="xrp">$...</p></div>
-        <div class="card"><h3>Dogecoin</h3><p id="doge">$...</p></div>
-        <div class="card"><h3>TRON</h3><p id="trx">$...</p></div>
-        <div class="card"><h3>Cardano</h3><p id="ada">$...</p></div>
-        <div class="card"><h3>Avalanche</h3><p id="avax">$...</p></div>
-        <div class="card"><h3>Chainlink</h3><p id="link">$...</p></div>
-    </div>
-</section>
-
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
