@@ -3,88 +3,129 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>One Circle Alpha</title>
 
 <style>
+
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial, sans-serif;
+font-family:Arial,sans-serif;
 }
 
 body{
-background:#050505;
+background:#000;
 color:white;
-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-text-align:center;
+min-height:100vh;
 padding:20px;
 }
 
 .container{
 max-width:700px;
+width:100%;
+text-align:center;
 }
 
 .logo{
-width:180px;
-margin-bottom:30px;
+width:160px;
+margin-bottom:25px;
 }
 
 h1{
 font-size:52px;
-margin-bottom:20px;
 color:#d4af37;
-}
-
-p{
-font-size:20px;
-line-height:1.7;
-color:#d0d0d0;
+margin-bottom:10px;
 }
 
 .badge{
 display:inline-block;
-padding:10px 20px;
-margin-bottom:25px;
-border-radius:50px;
-background:#d4af37;
-color:#000;
+padding:12px 25px;
+border:1px solid #d4af37;
+border-radius:30px;
+color:#d4af37;
+margin-bottom:30px;
 font-weight:bold;
 }
+
+p{
+font-size:20px;
+line-height:1.8;
+margin-bottom:15px;
+color:#ddd;
+}
+
+.features{
+margin:30px 0;
+text-align:left;
+display:inline-block;
+}
+
+.features p{
+margin-bottom:10px;
+}
+
+.button{
+display:inline-block;
+padding:15px 35px;
+background:#d4af37;
+color:black;
+font-weight:bold;
+border-radius:40px;
+margin-top:25px;
+}
+
+@media(max-width:768px){
+
+.logo{
+width:130px;
+}
+
+h1{
+font-size:38px;
+}
+
+p{
+font-size:17px;
+}
+
+.features{
+text-align:center;
+}
+
+}
+
 </style>
 
 </head>
+
 <body>
 
 <div class="container">
 
-<img src="images/logo.png" class="logo" alt="One Circle Alpha">
-
-<div class="badge">
-Maintenance Mode
-</div>
+<img src="images/logo.png" class="logo">
 
 <h1>One Circle Alpha</h1>
 
-<p>
-The Testnet Claim Round has ended.
-</p>
+<div class="badge">Maintenance Mode</div>
 
-<br>
+<p>The Testnet Airdrop has concluded successfully.</p>
 
-<p>
-We are currently preparing the next release on Base Mainnet.
-</p>
+<p>We are currently preparing the next phase of the ecosystem on Base Mainnet.</p>
 
-<br>
+<div class="features">
+<p>• Mainnet Integration</p>
+<p>• Enhanced Claim System</p>
+<p>• Testnet Rewards</p>
+</div>
 
-<p>
-Thank you to everyone who participated in testing.
-See you in the next phase.
-</p>
+<p>Thank you for being part of the journey.</p>
+
+<div class="button">Launching Soon on Base Mainnet</div>
 
 </div>
 
